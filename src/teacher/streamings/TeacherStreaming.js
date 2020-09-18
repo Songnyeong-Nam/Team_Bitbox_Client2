@@ -121,7 +121,7 @@ class TeacherStreaming extends Component{
 
         }
         this.localVideoRef = React.createRef();
-        this.socket = io.connect('https://secret-dawn-11778.herokuapp.com/')
+        this.socket = io.connect('https://server.bitpickle.xyz:8443')
         this.nextPage = this.nextPage.bind(this)
         this.prevPage = this.prevPage.bind(this)
         this.offer = this.offer.bind(this)
