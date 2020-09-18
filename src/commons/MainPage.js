@@ -90,7 +90,7 @@ const MainPage = () => {
                     <br/>
                     <br/>
                     <button className="student_button" style={{width:"20%",height:"11%", fontSize:"small"}}
-                            onClick={() => onClickLogin(tUserId, tUserPw, 0, "/teacher", setIsTLogin)}>로그인</button>
+                            onClick={() => onClickLogin(sUserId, sUserPw, 1, "/student", setIsSLogin)}>로그인</button>
                     {isTLogin &&
                     <div className="main-login">아이디와 비밀번호를 확인해 주십시오.</div>}
                 </div>}

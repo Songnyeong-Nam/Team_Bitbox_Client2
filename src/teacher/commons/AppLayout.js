@@ -21,7 +21,7 @@ const AppLayout = ({children, history}) => {
             </main>
             <Footer/>
         </div>
-        <button className="chat-float" type="button" onClick={() => window.open("http://pf.kakao.com/_vsxkHxb/chat")}
+        <button className="chat-float" type="button" onClick={() => window.open("http://pf.kakao.com/_RxiBxdK/chat")}
                 id="chatbot">
             <img src={chatlogo}/>
         </button>

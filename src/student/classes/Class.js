@@ -77,10 +77,6 @@ const Class = ({match}) => {
     }
 
 
-
-
-
-
     useEffect( ()=> {
         axios
             .get(`http://localhost:5000/schedule/student/${userCode}`)
@@ -138,7 +134,7 @@ const Class = ({match}) => {
                                    <Row>
                                        <Col className="s_class_clock">
                                            <Clock format={'YYYY년 MM월 DD일'}/>
-                                           <text>ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ</text>
+                                           <text>ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ</text>
                                            <Clock format={'HH:MM'}/>
                                        </Col>
                                    </Row>
