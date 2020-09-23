@@ -6,7 +6,7 @@ import axios from 'axios'
 const Grade = ({cardClass}) => {
     const [result, setResult] = useState([])
     useEffect(() => {
-        axios.get(`http://localhost:5000/main/student/grade/${localStorage.getItem("id")}`)
+        axios.get(`https://server.imthesong.site/main/student/grade/${localStorage.getItem("id")}`)
             .then(({data}) => {
                 setResult(data)
             })

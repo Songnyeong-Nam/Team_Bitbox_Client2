@@ -52,14 +52,12 @@ const ClassesMain = ({match}) => {
     let interval = useRef();
 
     const handleTime = period =>{
-        clear()
         getTimeFromServer(period)
     }
 
     const getTimeFromServer = (period) =>{
-        clear()
         axios
-            .get(`http://localhost:5000/tschedule/timer/${period.id}/${period.subjectCode}`)
+            .get(`https://server.imthesong.site/tschedule/timer/${period.id}/${period.subjectCode}`)
             .then(res =>{
                 setTimerTime(res.data.time)
                 startTimer(res.data.time)
@@ -67,7 +65,6 @@ const ClassesMain = ({match}) => {
             })
     }
     const startTimer = (time) => {
-
         interval = setInterval(() => {
             const currentTime = new Date().getTime()
             const distance = time - currentTime;
@@ -75,6 +72,7 @@ const ClassesMain = ({match}) => {
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
             const seconds = Math.floor((distance % (1000 * 60)) / 1000)
+            
             if (distance < 0) {
                 clearInterval(interval.current)
             } else if(timerTime != time){
@@ -92,7 +90,7 @@ const ClassesMain = ({match}) => {
         let timerId = setTimeout(() => { clearInterval(timerId); alert('정지'); }, 2000);
         clearTimeout(timerId)
         setTimerTime('')
-         setTimerDay('00')
+        setTimerDay('00')
         setTimerHour('00')
         setTimerMinute('00')
         setTimerSecond('00')
@@ -110,7 +108,7 @@ const ClassesMain = ({match}) => {
 
     const getData = (userCode) => {
         axios
-            .get(`http://localhost:5000/tsubject/detailList/${userCode}`)
+            .get(`https://server.imthesong.site/tsubject/detailList/${userCode}`)
             .then(({data}) => {
                 setLessons(data.list)
                 dispatch(getLessonList(data.list))
@@ -120,7 +118,7 @@ const ClassesMain = ({match}) => {
             })
 
         axios
-            .get(`http://localhost:5000/tschedule/dndTimetable/${userCode}`)
+            .get(`https://server.imthesong.site/tschedule/dndTimetable/${userCode}`)
             .then(res => {
                 const allSchedule = [];
                 const first = [];
@@ -141,7 +139,7 @@ const ClassesMain = ({match}) => {
                 setTimetable(allSchedule);
             })
         axios
-            .get(`http://localhost:5000/tsubject/basicInfo?cUserCode=${userCode}`)
+            .get(`https://server.imthesong.site/tsubject/basicInfo?cUserCode=${userCode}`)
             .then(({data}) => {
                 setBasicInfo(data.map)
                 dispatch(getBasicInfo(data.map))
@@ -263,8 +261,9 @@ const ClassesMain = ({match}) => {
                             }
                         </div>
                         <div className="button_container attendance_margin">
-                            <div>
+                            <div className="timer_container">
                                 <p>남은 수업 시간 {timerDay} 일 {timerHour} : {timerMinute} : {timerSecond}</p>
+                                <button className="reset_Timer" onClick={()=>clear()}>Reset</button>
                             </div>
                             <NavLink to="/teacherstreaming">
                                 <button className="streaming_button">CREATE</button>

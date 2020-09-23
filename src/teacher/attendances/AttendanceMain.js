@@ -41,12 +41,12 @@ const AttendanceMain = ({match}) => {
     }
     const chartDatas = (grade,ban) => {
         axios
-            .get(`http://localhost:5000/tattendance/weeklychart/${grade}/${ban}?javaDate=${javaDate}`)
+            .get(`https://server.imthesong.site/tattendance/weeklychart/${grade}/${ban}?javaDate=${javaDate}`)
             .then(res =>{
                 setWeeklyChart(res.data)
             })
         axios
-            .get(`http://localhost:5000/tattendance/singleday/${grade}/${ban}?javaDate=${javaDate}`)
+            .get(`https://server.imthesong.site/tattendance/singleday/${grade}/${ban}?javaDate=${javaDate}`)
             .then(res =>{
                 setDailyChart(res.data)
             })
@@ -61,7 +61,7 @@ const AttendanceMain = ({match}) => {
                 label: '출결 현황',
                 borderColor: ['#184f90','#00365a','#8a9fb4'],
                 backgroundColor: ['rgba(24,79,144,0.1)','rgba(0,54,90,0.1)','rgba(138,159,180,0.1)'],
-                data: [100,0,0],
+                data: dailyChart,
                 hoverBackgroundColor:['#184f90','#00365a','#8a9fb4'],
                 hoverBorderColor:['rgba(24,79,144,0.1)','rgba(0,54,90,0.1)','rgba(138,159,180,0.1)'],
                 borderWidth: '2.5',
@@ -73,7 +73,7 @@ const AttendanceMain = ({match}) => {
         datasets: [
             {
                 label: '출석',
-                data: [100,100,100,100,100],
+                data: weeklyChart[0],
                 borderColor: '#184f90',
                 pointBackgroundColor: chartTooltipColor.foregroundColor,
                 pointBorderColor: chartTooltipColor.themeColor1,
@@ -86,7 +86,7 @@ const AttendanceMain = ({match}) => {
             },
             {
                 label: '결석',
-                data: [0,0,0,0,0],
+                data: weeklyChart[1],
                 borderColor: '#00365a',
                 pointBackgroundColor: chartTooltipColor.foregroundColor,
                 pointBorderColor: chartTooltipColor.themeColor1,
@@ -99,7 +99,7 @@ const AttendanceMain = ({match}) => {
             },
             {
                 label: '지각',
-                data:[0,0,0,0,0],
+                data: weeklyChart[2],
                 borderColor: '#8a9fb4',
                 pointBackgroundColor: chartTooltipColor.foregroundColor,
                 pointBorderColor: chartTooltipColor.themeColor1,
@@ -112,7 +112,8 @@ const AttendanceMain = ({match}) => {
             },
         ],
     };
-
+    console.log(dailyChart)
+    console.log(weeklyChart)
     return (
         <>
             <PerfectScrollbar>

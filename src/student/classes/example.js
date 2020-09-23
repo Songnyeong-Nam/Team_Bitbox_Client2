@@ -71,7 +71,7 @@ const Class = ({match}) => {
 
     const getDetail= (e,subjectCode) =>{
         axios
-            .get(`http://localhost:5000/ssubject/detailList/${subjectCode}`)
+            .get(`https://server.imthesong.site/ssubject/detailList/${subjectCode}`)
             .then(({data}) => {
                 console.log(data.subjectDetail)
                 setLessons(data.subjectDetail)
@@ -84,7 +84,7 @@ const Class = ({match}) => {
     }
     /*
             axios
-                .get(`http://localhost:5000/schedule/detailList/${userCode}`)
+                .get(`https://server.imthesong.site/schedule/detailList/${userCode}`)
                 .then(({data}) => {
                     setLessons(data.list)
                     dispatch(getLessonList(data.list))
@@ -96,7 +96,7 @@ const Class = ({match}) => {
 
     useEffect( ()=> {
         axios
-            .get(`http://localhost:5000/schedule/student/${userCode}`)
+            .get(`https://server.imthesong.site/schedule/student/${userCode}`)
             .then(res => {
                 console.log(res.data.student)
                 const schedules = res.data.student

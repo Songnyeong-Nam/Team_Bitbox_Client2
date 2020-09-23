@@ -10,7 +10,7 @@ const Attendance = () => {
     const curGrade = localStorage.getItem("curGrade")
     const schoolCode = localStorage.getItem("schoolCode")
     useEffect(() => {
-        axios.get(`http://localhost:5000/main/teacher/attendance/${schoolCode}/${curGrade}/${homeClass}`)
+        axios.get(`https://server.imthesong.site/main/teacher/attendance/${schoolCode}/${curGrade}/${homeClass}`)
             .then(({data}) => {
                 setCount(data.count)
                 setPercent(data.percent)

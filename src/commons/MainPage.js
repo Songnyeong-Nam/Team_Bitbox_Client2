@@ -36,7 +36,7 @@ const MainPage = () => {
     }
     const onClickLogin = (userId, userPw, positionChecker, url, visible) => {
         axios.post(
-            'http://localhost:5000/user/login',
+            'https://server.imthesong.site/user/login',
             {userId: userId, userPw: userPw, positionChecker: positionChecker},
             {
                 'Content-type': 'application/json',

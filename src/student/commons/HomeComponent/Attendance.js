@@ -8,7 +8,7 @@ const Attendance = () => {
     const [presentCount, setPresentCount] = useState(0)
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/main/student/attendance/${localStorage.getItem("id")}`)
+        axios.get(`https://server.imthesong.site/main/student/attendance/${localStorage.getItem("id")}`)
             .then(({data}) => {
                 setTotalDay(data.totalDay)
                 setPresentCount(data.presentCount)

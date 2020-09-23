@@ -8,7 +8,7 @@ const Grade = ({cardClass}) => {
     const curGrade = localStorage.getItem("curGrade")
     const schoolCode = localStorage.getItem("schoolCode")
     useEffect(() => {
-        axios.get(`http://localhost:5000/main/teacher/grade/${schoolCode}/${curGrade}/${homeClass}`)
+        axios.get(`https://server.imthesong.site/main/teacher/grade/${schoolCode}/${curGrade}/${homeClass}`)
             .then(({data}) => {
                 setResult(data)
             })

@@ -28,20 +28,20 @@ export const teacherStreamingReducer = ( state = {classCode : "", studentList : 
     }
 }
 const teacherStreamingApis = () => dispatch => {
-    axios.get(`http://localhost:5000/streamings/teacher/100000301`)
+    axios.get(`https://server.imthesong.site/streamings/teacher/100000301`)
         .then(({data})=>{
             dispatch(teacherStreamingRequest(data))
         })
         .catch(error => {throw (error)})
 }
 const fileListApis = ()=>dispatch => {
-    axios.get(`http://localhost:5000/file/list/subject/1`)
+    axios.get(`https://server.imthesong.site/file/list/subject/1`)
         .then(({data})=>{
             dispatch(teacherStreamingGetFile(data))
         })
 }
 const postApis = (payload)=> dispatch =>{
-    axios.post(`http://localhost:5000/file/upload/null/1`,payload,{
+    axios.post(`https://server.imthesong.site/file/upload/null/1`,payload,{
         authorization: 'JWT fefege..',
         Accept : 'application/json',
         'Content-Type': 'multipart/form-data'
@@ -52,7 +52,7 @@ const postApis = (payload)=> dispatch =>{
 }
 const fileDownloadApis = (fileId, fileName)=>dispatch => {
     console.log(`fileDownloadApis ${fileId}`)
-    axios.get(`http://localhost:5000/file/download/${fileId}`,{
+    axios.get(`https://server.imthesong.site/file/download/${fileId}`,{
         responseType: 'arraybuffer',
         headers: {
             'Content-Type': 'application/json',
@@ -68,7 +68,7 @@ const fileDownloadApis = (fileId, fileName)=>dispatch => {
     })
 }
 const fileDeleteApis = (fileId)=>dispatch =>{
-    axios.get(`http://localhost:5000/file/delete/${fileId}`)
+    axios.get(`https://server.imthesong.site/file/delete/${fileId}`)
         .then(res=>{
             dispatch(teacherStreamingDeleteFile())
         })

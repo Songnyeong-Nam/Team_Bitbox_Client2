@@ -164,3 +164,22 @@
      background-color: #2c4d6e;
      color: white;
  }
+ .reset_Timer{
+    width : 13%;
+    height: 12%;
+    cursor: pointer;
+    border: 2px solid #d2d1d1;
+    background-color: #2c4d6e;
+    color:white;
+    font-size: smaller;
+    margin-bottom: 0.3rem;
+    float : right;
+    margin-left : 1.0rem;
+
+ }
+ .timer_container{
+     width : 100%;
+     display:flex;
+     text-align: center;
+     padding-left: 3.2rem;
+ }
